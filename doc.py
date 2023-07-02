@@ -1,5 +1,6 @@
 import bpy
 
+print(C.collection.name)
 
 def main(context):
     for ob in context.scene.objects:
