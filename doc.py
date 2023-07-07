@@ -137,3 +137,9 @@ fcu_z = obj.animation_data.action.fcurves.new(data_path="location", index=2)
 fcu_z.keyframe_points.add(2)
 fcu_z.keyframe_points[0].co = 10.0, 0.0
 fcu_z.keyframe_points[1].co = 20.0, 1.0
+
+#DEBUG
+print('\nUsing dir(object) :\n')
+for attr in dir(bpy.context.active_object.data):
+
+    print(str(attr), getattr(bpy.context.active_object.data, attr))
