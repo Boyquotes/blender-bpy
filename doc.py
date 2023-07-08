@@ -142,4 +142,27 @@ fcu_z.keyframe_points[1].co = 20.0, 1.0
 print('\nUsing dir(object) :\n')
 for attr in dir(bpy.context.active_object.data):
 
+
+#DISPLAY VERTEX COORDS
+obj = bpy.data.objects['Cube']
+print('ICI')
+wm = obj.matrix_world
+print( wm )
+for v in obj.data.vertices:
+    print(v)
+    world = wm @ v.co
+    print(world)
+    print(world.x)
+    print(world.y)
+    print(world.z)
+    
+coords = [(obj.matrix_world @ v.co) for v in obj.data.vertices]
+print(coords)
+
+#EXTRUDE
+#bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value":(0, 0, 2)})
+bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value":(0, 0, -2)})
+#bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value":(-2, 0, 0)})
+#bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value":(0, 2, 0)})
+
     print(str(attr), getattr(bpy.context.active_object.data, attr))
