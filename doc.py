@@ -143,6 +143,23 @@ print('\nUsing dir(object) :\n')
 for attr in dir(bpy.context.active_object.data):
 
 
+#PYRAMID
+# Define the coordinates of the vertices. Each vertex is defined by 3 consecutive floats.
+coords=[(-1.0, -1.0, -1.0), (1.0, -1.0, -1.0), (1.0, 1.0 ,-1.0), \
+(-1.0, 1.0,-1.0), (0.0, 0.0, 1.0)]
+ 
+# Define the faces by index numbers. Each faces is defined by 4 consecutive integers.
+faces=[ (2,1,0), (0,1,4), (1,2,4), (2,3,4), (3,0,4)]
+ 
+me = bpy.data.meshes.new("PyramidMesh")   # create a new mesh  
+ 
+ob = bpy.data.objects.new("Pyramid", me)          # create an object with that mesh
+ob.location = bpy.context.scene.cursor.location   # position object at 3d-cursor
+bpy.context.collection.objects.link(ob)                # Link object to scene
+ 
+# Fill the mesh with verts, edges, faces 
+me.from_pydata(coords,[],faces)   # edges or faces should be [], or you ask for problems
+me.update(calc_edges=True)    # Update mesh with new data
 #DISPLAY VERTEX COORDS
 obj = bpy.data.objects['Cube']
 print('ICI')
