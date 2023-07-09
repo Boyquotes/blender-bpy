@@ -142,6 +142,8 @@ fcu_z.keyframe_points[1].co = 20.0, 1.0
 print('\nUsing dir(object) :\n')
 for attr in dir(bpy.context.active_object.data):
 
+bpy.app.debug_wm=1
+print(bpy.app.debug_wm)
 
 #PYRAMID
 # Define the coordinates of the vertices. Each vertex is defined by 3 consecutive floats.
