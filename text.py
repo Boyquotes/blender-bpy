@@ -1,5 +1,8 @@
+i=0
 for text in bpy.data.texts:
+    print(i)
     print(text)
+    i=i+1
 ==
 print(bpy.data.texts[1].name)  
 ==
