@@ -1,0 +1,5 @@
+import bpy
+from easybpy import *
+
+print(ao())
+print(so())
