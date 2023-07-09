@@ -1,5 +1,8 @@
- print(bpy.data.texts[1].name)  
-
+for text in bpy.data.texts:
+    print(text)
+==
+print(bpy.data.texts[1].name)  
+==
 name="easyPBI"
 bpy.data.texts[name]
 bpy.data.texts[name].clear()  
@@ -23,4 +26,5 @@ for text in bpy.data.texts:
         continue
     path = Path(bpy.path.abspath(text.filepath))
     print(path)
+ ===
 
