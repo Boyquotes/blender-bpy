@@ -12,3 +12,15 @@ if name in bpy.data.texts:
 else:
     text_block = bpy.data.texts.new(name)
 
+===
+import bpy
+from pathlib import Path
+for text in bpy.data.texts:
+    # internal
+    if text.is_in_memory:
+        print(text.is_in_memory)
+        print(Path(bpy.path.abspath(text.filepath)))
+        continue
+    path = Path(bpy.path.abspath(text.filepath))
+    print(path)
+
