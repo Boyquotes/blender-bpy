@@ -197,3 +197,8 @@ add_material_to_object("Island-col", "Namee")
 bpy.data.textures.new("NewTexture", type='IMAGE')
 
     print(str(attr), getattr(bpy.context.active_object.data, attr))
+
+# DIRECTORY AND PATH
+filepath = bpy.data.filepath
+directory = os.path.dirname(filepath)
+print(directory)
