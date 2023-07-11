@@ -189,9 +189,30 @@ bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value":(0, 0, -2)})
 #import bmesh
 #from easybpy import *
 
-#MATERIALS
+#MATERIALS BPY
 create_material('Namee')
 add_material_to_object("Island-col", "Namee")
+
+#MATERIALS
+mat = bpy.data.materials.new("moveon")
+#mat = bpy.context.active_object.material_slots[0].material
+
+filepath = bpy.data.filepath
+directory = os.path.dirname(filepath)
+print(directory)
+#bpy.path.abspath('images/gradientPalette.png')
+print(directory+bpy.path.abspath('/images/gradientPalette.png'))
+imgpath = bpy.path.abspath(directory+'/images/gradientPalette.png')
+img = bpy.data.images.load(imgpath)
+
+mat.use_nodes=True
+##setup the node_tree and links as you would manually on shader Editor
+##to define an image texture for a material
+material_output = mat.node_tree.nodes.get('Material Output')
+principled_BSDF = mat.node_tree.nodes.get('Principled BSDF')
+tex_node = mat.node_tree.nodes.new('ShaderNodeTexImage')
+tex_node.image = img
+mat.node_tree.links.new(tex_node.outputs[0], principled_BSDF.inputs[0])
 
 #TEXTURES
 bpy.data.textures.new("NewTexture", type='IMAGE')
@@ -202,3 +223,5 @@ bpy.data.textures.new("NewTexture", type='IMAGE')
 filepath = bpy.data.filepath
 directory = os.path.dirname(filepath)
 print(directory)
+
+
