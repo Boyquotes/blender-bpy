@@ -214,6 +214,34 @@ tex_node = mat.node_tree.nodes.new('ShaderNodeTexImage')
 tex_node.image = img
 mat.node_tree.links.new(tex_node.outputs[0], principled_BSDF.inputs[0])
 
+####
+filepath = bpy.data.filepath
+directory = os.path.dirname(filepath)
+print(directory)
+#bpy.path.abspath('images/gradientPalette.png')
+print(directory+bpy.path.abspath('/images/gradientPalette.png'))
+imgpath = bpy.path.abspath(directory+'/images/gradientPalette.png')
+img = bpy.data.images.load(imgpath)
+mat.use_nodes=True
+
+##setup the node_tree and links as you would manually on shader Editor
+##to define an image texture for a material
+material_output = mat.node_tree.nodes.get('Material Output')
+principled_BSDF = mat.node_tree.nodes.get('Principled BSDF')
+
+tex_node = mat.node_tree.nodes.new('ShaderNodeTexImage')
+tex_node.image = img
+
+mat.node_tree.links.new(tex_node.outputs[0], principled_BSDF.inputs[0])
+
+bpy.ops.object.mode_set(mode="EDIT")
+mesh = bpy.context.active_object.data
+bm = bmesh.from_edit_mesh(bpy.context.object.data)
+bm.faces.ensure_lookup_table()
+bpy.ops.uv.unwrap()
+bpy.ops.object.mode_set(mode="OBJECT")
+bpy.context.active_object.data.materials.append(mat)
+
 #TEXTURES
 bpy.data.textures.new("NewTexture", type='IMAGE')
 
