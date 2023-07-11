@@ -191,6 +191,7 @@ bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value":(0, 0, -2)})
 
 #MATERIALS
 create_material('Namee')
+add_material_to_object("Island-col", "Namee")
 
 #TEXTURES
 bpy.data.textures.new("NewTexture", type='IMAGE')
