@@ -219,6 +219,10 @@ bpy.data.textures.new("NewTexture", type='IMAGE')
 
     print(str(attr), getattr(bpy.context.active_object.data, attr))
 
+# UNWRAP
+bpy.ops.uv.unwrap()
+bpy.ops.uv.smart_project()
+
 # DIRECTORY AND PATH
 filepath = bpy.data.filepath
 directory = os.path.dirname(filepath)
