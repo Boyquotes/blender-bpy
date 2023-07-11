@@ -220,6 +220,28 @@ bpy.data.textures.new("NewTexture", type='IMAGE')
     print(str(attr), getattr(bpy.context.active_object.data, attr))
 
 # UNWRAP
+uv_layer = bm.loops.layers.uv.active
+#assign the uv values for the vertices of each face. This example
+#assumes the default cube
+for i in range(6):
+
+    loop_data = bm.faces[i].loops
+    uv_data = loop_data[0][uv_layer].uv
+    uv_data.x = 1.0
+    uv_data.y = 0.0
+
+    uv_data = loop_data[1][uv_layer].uv
+    uv_data.x = 1.0
+    uv_data.y = 1.0
+
+    uv_data = loop_data[2][uv_layer].uv
+    uv_data.x = 0.0
+    uv_data.y = 1.0
+
+    uv_data = loop_data[3][uv_layer].uv
+    uv_data.x = 0.0
+    uv_data.y = 0.0
+
 bpy.ops.uv.unwrap()
 bpy.ops.uv.smart_project()
 
