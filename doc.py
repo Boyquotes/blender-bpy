@@ -184,4 +184,15 @@ bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value":(0, 0, -2)})
 #bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value":(-2, 0, 0)})
 #bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value":(0, 2, 0)})
 
+# MATERIAL TEXTURE
+#import bpy
+#import bmesh
+#from easybpy import *
+
+#MATERIALS
+create_material('Namee')
+
+#TEXTURES
+bpy.data.textures.new("NewTexture", type='IMAGE')
+
     print(str(attr), getattr(bpy.context.active_object.data, attr))
