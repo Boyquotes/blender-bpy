@@ -184,4 +184,98 @@ bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value":(0, 0, -2)})
 #bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value":(-2, 0, 0)})
 #bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value":(0, 2, 0)})
 
+# MATERIAL TEXTURE
+#import bpy
+#import bmesh
+#from easybpy import *
+
+#MATERIALS BPY
+create_material('Namee')
+add_material_to_object("Island-col", "Namee")
+
+#MATERIALS
+mat = bpy.data.materials.new("moveon")
+#mat = bpy.context.active_object.material_slots[0].material
+
+filepath = bpy.data.filepath
+directory = os.path.dirname(filepath)
+print(directory)
+#bpy.path.abspath('images/gradientPalette.png')
+print(directory+bpy.path.abspath('/images/gradientPalette.png'))
+imgpath = bpy.path.abspath(directory+'/images/gradientPalette.png')
+img = bpy.data.images.load(imgpath)
+
+mat.use_nodes=True
+##setup the node_tree and links as you would manually on shader Editor
+##to define an image texture for a material
+material_output = mat.node_tree.nodes.get('Material Output')
+principled_BSDF = mat.node_tree.nodes.get('Principled BSDF')
+tex_node = mat.node_tree.nodes.new('ShaderNodeTexImage')
+tex_node.image = img
+mat.node_tree.links.new(tex_node.outputs[0], principled_BSDF.inputs[0])
+
+####
+filepath = bpy.data.filepath
+directory = os.path.dirname(filepath)
+print(directory)
+#bpy.path.abspath('images/gradientPalette.png')
+print(directory+bpy.path.abspath('/images/gradientPalette.png'))
+imgpath = bpy.path.abspath(directory+'/images/gradientPalette.png')
+img = bpy.data.images.load(imgpath)
+mat.use_nodes=True
+
+##setup the node_tree and links as you would manually on shader Editor
+##to define an image texture for a material
+material_output = mat.node_tree.nodes.get('Material Output')
+principled_BSDF = mat.node_tree.nodes.get('Principled BSDF')
+
+tex_node = mat.node_tree.nodes.new('ShaderNodeTexImage')
+tex_node.image = img
+
+mat.node_tree.links.new(tex_node.outputs[0], principled_BSDF.inputs[0])
+
+bpy.ops.object.mode_set(mode="EDIT")
+mesh = bpy.context.active_object.data
+bm = bmesh.from_edit_mesh(bpy.context.object.data)
+bm.faces.ensure_lookup_table()
+bpy.ops.uv.unwrap()
+bpy.ops.object.mode_set(mode="OBJECT")
+bpy.context.active_object.data.materials.append(mat)
+
+#TEXTURES
+bpy.data.textures.new("NewTexture", type='IMAGE')
+
     print(str(attr), getattr(bpy.context.active_object.data, attr))
+
+# UNWRAP
+uv_layer = bm.loops.layers.uv.active
+#assign the uv values for the vertices of each face. This example
+#assumes the default cube
+for i in range(6):
+
+    loop_data = bm.faces[i].loops
+    uv_data = loop_data[0][uv_layer].uv
+    uv_data.x = 1.0
+    uv_data.y = 0.0
+
+    uv_data = loop_data[1][uv_layer].uv
+    uv_data.x = 1.0
+    uv_data.y = 1.0
+
+    uv_data = loop_data[2][uv_layer].uv
+    uv_data.x = 0.0
+    uv_data.y = 1.0
+
+    uv_data = loop_data[3][uv_layer].uv
+    uv_data.x = 0.0
+    uv_data.y = 0.0
+
+bpy.ops.uv.unwrap()
+bpy.ops.uv.smart_project()
+
+# DIRECTORY AND PATH
+filepath = bpy.data.filepath
+directory = os.path.dirname(filepath)
+print(directory)
+
+
