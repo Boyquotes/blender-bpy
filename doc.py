@@ -361,3 +361,14 @@ def open_json():
             i += 1
         return data
     f.close()
+
+### DELETE
+def deleteFloor():
+	for obj in bpy.context.scene.objects:
+		print(obj)
+		print(obj.type)
+		if obj.type == 'MESH' and obj.name.lower().startswith("n"):
+			print('MESH')
+			bpy.data.objects[obj.name].select_set(True)
+			bpy.ops.object.delete()
+			#obj.name = "newName"
