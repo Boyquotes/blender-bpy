@@ -214,6 +214,31 @@ tex_node = mat.node_tree.nodes.new('ShaderNodeTexImage')
 tex_node.image = img
 mat.node_tree.links.new(tex_node.outputs[0], principled_BSDF.inputs[0])
 
+
+###
+IMPORT
+def importSphereFromScene(FILEPATH):
+	with bpy.data.libraries.load(FILEPATH) as (data_from, data_to):
+		data_to.objects = [name for name in data_from.objects]
+		print('These are the objs: ', data_to.objects)
+
+	# Objects have to be linked to show up in a scene
+	for obj in data_to.objects:
+		print(obj)
+		obj_copy = obj.copy()
+	return obj_copy
+
+def importToScene(FILEPATH):
+	with bpy.data.libraries.load(FILEPATH) as (data_from, data_to):
+		data_to.objects = [name for name in data_from.objects]
+		print('These are the objs: ', data_to.objects)
+
+	# Objects have to be linked to show up in a scene
+	for obj in data_to.objects:
+#   	 bpy.context.scene.objects.link(obj)
+#   	 bpy.context.collection.objects.link(obj)
+		bpy.data.collections['collection_name'].objects.link(obj)
+
 ####
 filepath = bpy.data.filepath
 directory = os.path.dirname(filepath)
