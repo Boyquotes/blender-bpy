@@ -215,6 +215,16 @@ tex_node.image = img
 mat.node_tree.links.new(tex_node.outputs[0], principled_BSDF.inputs[0])
 
 ###
+def newMaterial(id):
+    mat = bpy.data.materials.get(id)
+    if mat is None:
+        mat = bpy.data.materials.new(name=id)
+    mat.use_nodes = True
+    if mat.node_tree:
+        mat.node_tree.links.clear()
+        mat.node_tree.nodes.clear()
+    return mat
+	
 def newShader(id, type, r, g, b):
 	mat = newMaterial(id)
 	nodes = mat.node_tree.nodes
