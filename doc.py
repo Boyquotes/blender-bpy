@@ -342,4 +342,22 @@ filepath = bpy.data.filepath
 directory = os.path.dirname(filepath)
 print(directory)
 
-
+###
+JSON
+def open_json():
+    i = 0
+    with open(r'/Users/nicolasvilla/blender/bpy/save.json','r') as f: 
+        data=json.load(f)
+        print(data)
+        print(len(data))
+        floorIsland(len(data))
+        for token in data.items():
+            print(token)
+            print(data[str(i)])
+            print(data[str(i)]['symbol'])
+            print(data[str(i)]['cs'])
+            print(data[str(i)]['mc'])
+            #print(data['0']['symbol'])
+            i += 1
+        return data
+    f.close()
