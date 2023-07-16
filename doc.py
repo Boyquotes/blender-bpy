@@ -433,6 +433,24 @@ def floor(nbCubeMax):
 				item.name = item.name+"-col"
 				item.data.name = item.name+"-col"
 
+### MODIFIER
+def displace():
+    bpy.ops.object.modifier_add(type='DISPLACE')
+    texture_set = set(bpy.data.textures.keys())
+    bpy.ops.texture.new()
+    new_texture_set = set(bpy.data.textures.keys()) - texture_set
+    texture_name = new_texture_set.pop()
+    texture = bpy.data.textures[texture_name]
+    texture.type = 'VORONOI'
+    bpy.context.active_object.modifiers[-1].texture = texture
+    bpy.context.active_object.modifiers[-1].name = "Texture1"
+    texture = bpy.data.textures[texture_name]
+    texture.name = "Texture1"
+    texture.use_fake_user = 1
+    texture.type= "MUSGRAVE"
+    
+displace()
+
 def addMoodifierSubSurf():
     bpy.ops.object.modifier_add(type='SUBSURF')
     bpy.context.active_object.modifiers[-1].levels = 6
