@@ -254,6 +254,14 @@ def drawObject():
 	mat = newShader("Shader1", "diffuse", 0.1, 1, 0.1)
 	bpy.ops.mesh.primitive_cube_add(size=2, align='WORLD', location=(5, 0, 0))
 	bpy.context.active_object.data.materials.append(mat)
+
+matGreen = newShader("Green", "diffuse", 0.1, 1, 0.1)
+print(matGreen)
+matBrown = newShader("Brown", "diffuse", 0.157, 0.048, 0.013)
+print(matBrown)
+matBrown = newShader("Grey", "diffuse", 0.051, 0.051, 0.051)
+print(matBrown)
+
 ###
 IMPORT
 def importSphereFromScene(FILEPATH):
