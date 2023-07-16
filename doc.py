@@ -262,6 +262,19 @@ print(matBrown)
 matBrown = newShader("Grey", "diffuse", 0.051, 0.051, 0.051)
 print(matBrown)
 
+###TEXTURES
+def displace():
+    bpy.ops.object.modifier_add(type='DISPLACE')
+    texture_set = set(bpy.data.textures.keys())
+    bpy.ops.texture.new()
+    new_texture_set = set(bpy.data.textures.keys()) - texture_set
+    texture_name = new_texture_set.pop()
+    texture = bpy.data.textures[texture_name]
+    texture.type = 'VORONOI'
+    bpy.context.active_object.modifiers[-1].texture = texture
+    
+displace()
+
 ###
 IMPORT
 def importSphereFromScene(FILEPATH):
