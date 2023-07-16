@@ -432,3 +432,9 @@ def floor(nbCubeMax):
 				item.data.materials.append(bpy.data.materials['Material.Black'])
 				item.name = item.name+"-col"
 				item.data.name = item.name+"-col"
+
+def addMoodifierSubSurf():
+    bpy.ops.object.modifier_add(type='SUBSURF')
+    bpy.context.active_object.modifiers[-1].levels = 6
+    
+addMoodifierSubSurf()
