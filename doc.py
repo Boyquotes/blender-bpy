@@ -214,7 +214,36 @@ tex_node = mat.node_tree.nodes.new('ShaderNodeTexImage')
 tex_node.image = img
 mat.node_tree.links.new(tex_node.outputs[0], principled_BSDF.inputs[0])
 
+###
+def newShader(id, type, r, g, b):
+	mat = newMaterial(id)
+	nodes = mat.node_tree.nodes
+	links = mat.node_tree.links
+	output = nodes.new(type='ShaderNodeOutputMaterial')
 
+	if type == "diffuse":
+		shader = nodes.new(type='ShaderNodeBsdfDiffuse')
+		nodes["Diffuse BSDF"].inputs[0].default_value = (r, g, b, 1)
+
+	elif type == "emission":
+		shader = nodes.new(type='ShaderNodeEmission')
+		nodes["Emission"].inputs[0].default_value = (r, g, b, 1)
+		nodes["Emission"].inputs[1].default_value = 1
+
+	elif type == "glossy":
+		shader = nodes.new(type='ShaderNodeBsdfGlossy')
+		nodes["Glossy BSDF"].inputs[0].default_value = (r, g, b, 1)
+		nodes["Glossy BSDF"].inputs[1].default_value = 0
+
+	links.new(shader.outputs[0], output.inputs[0])
+
+	return mat
+	
+def drawObject():
+
+	mat = newShader("Shader1", "diffuse", 0.1, 1, 0.1)
+	bpy.ops.mesh.primitive_cube_add(size=2, align='WORLD', location=(5, 0, 0))
+	bpy.context.active_object.data.materials.append(mat)
 ###
 IMPORT
 def importSphereFromScene(FILEPATH):
@@ -238,7 +267,17 @@ def importToScene(FILEPATH):
 #   	 bpy.context.scene.objects.link(obj)
 #   	 bpy.context.collection.objects.link(obj)
 		bpy.data.collections['collection_name'].objects.link(obj)
-
+###
+#SAVE / OPEN
+def saveScene(filepath=''):
+    if filepath != '':
+        bpy.ops.wm.save_as_mainfile(filepath=DIRECTORY+filepath)
+    else:
+        bpy.ops.wm.save_as_mainfile(filepath=bpy.data.filepath)
+        
+def openScene():
+    bpy.ops.wm.open_mainfile(filepath=bpy.data.filepath)
+	
 ####
 filepath = bpy.data.filepath
 directory = os.path.dirname(filepath)
