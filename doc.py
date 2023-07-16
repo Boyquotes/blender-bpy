@@ -372,3 +372,32 @@ def deleteFloor():
 			bpy.data.objects[obj.name].select_set(True)
 			bpy.ops.object.delete()
 			#obj.name = "newName"
+
+### DRAW
+spacing = 2.2
+nbCubeMax = 5
+def floor(nbCubeMax):
+	# Iterate over each grid 'cell' we want a cube at
+	for x in range(nbCubeMax):
+		for y in range(nbCubeMax):
+			# calculate the location of the current grid cell, generate a random height
+			location = (x * spacing, y * spacing, random.random() * 2)
+
+			# add the cube
+			bpy.ops.mesh.primitive_cube_add(
+				size=2,
+				enter_editmode=False,
+				align='WORLD',
+				location=location,
+				scale=(1, 1, 1))
+			bpy.context.active_object.name = 'new_name'+str(x)+str(y)
+			# set the cube's material (color in this case)
+			item = bpy.context.object
+			if random.random() < 0.1:
+				item.data.materials.append(bpy.data.materials['Material.Red'])
+				item.name = item.name+"-col"
+				item.data.name = item.name+"-col"
+			else:
+				item.data.materials.append(bpy.data.materials['Material.Black'])
+				item.name = item.name+"-col"
+				item.data.name = item.name+"-col"
