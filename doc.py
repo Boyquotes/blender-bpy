@@ -462,3 +462,18 @@ addMoodifierSubSurf()
 
 >>> bpy.data.objects["Landscape"].modifiers["GeometryNodes"].name
 'GeometryNodes'
+
+# DELETE
+import bpy
+
+#Get the material you want (replace the name below)
+mat = bpy.data.materials['Material']
+
+#Get the node in its node tree (replace the name below)
+node_to_delete =  mat.node_tree.nodes['Principled BSDF']
+
+#Remove it
+mat.node_tree.nodes.remove( node_to_delete )
+
+# DELETE MESH
+bpy.ops.mesh.delete(type='VERT')
