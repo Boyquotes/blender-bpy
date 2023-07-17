@@ -456,3 +456,9 @@ def addMoodifierSubSurf():
     bpy.context.active_object.modifiers[-1].levels = 6
     
 addMoodifierSubSurf()
+
+>>> bpy.data.node_groups["Geometry Nodes.019"].name
+'Geometry Nodes.019'
+
+>>> bpy.data.objects["Landscape"].modifiers["GeometryNodes"].name
+'GeometryNodes'
