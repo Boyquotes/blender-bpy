@@ -477,5 +477,12 @@ mat.node_tree.nodes.remove( node_to_delete )
 
 # ADDONS
 bpy.ops.preferences.addon_enable(module = "node_arrange")
+
+# VERSION
+    print(bpy.app.version_string)
+    print(bpy.app.version)
+    if (2, 76, 0) < bpy.app.version:
+        print("Your Blender version is up to date!")
+
 # DELETE MESH
 bpy.ops.mesh.delete(type='VERT')
