@@ -486,3 +486,27 @@ bpy.ops.preferences.addon_enable(module = "node_arrange")
 
 # DELETE MESH
 bpy.ops.mesh.delete(type='VERT')
+
+#TIMER
+    bpy.app.timers.register(scene_setup, first_interval=1.0)
+    bpy.app.timers.register(create_centerpiece, first_interval=3.0)
+    bpy.app.timers.register(arrangeNode.narrange, first_interval=6.0)
+
+# TIMER QUEUE
+# This function can safely be called in another thread.
+# The function will be executed when the timer runs the next time.
+def run_in_main_thread(function):
+    print("register")
+    execution_queue.put(function)
+
+def execute_queued_functions():
+    while not execution_queue.empty():
+        function = execution_queue.get()
+        print("execute")
+        function()
+    return 5.0
+
+    run_in_main_thread(scene_setup)
+    run_in_main_thread(create_centerpiece)
+    run_in_main_thread(arrangeNode.narrange)
+    bpy.app.timers.register(execute_queued_functions)
