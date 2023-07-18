@@ -475,5 +475,7 @@ node_to_delete =  mat.node_tree.nodes['Principled BSDF']
 #Remove it
 mat.node_tree.nodes.remove( node_to_delete )
 
+# ADDONS
+bpy.ops.preferences.addon_enable(module = "node_arrange")
 # DELETE MESH
 bpy.ops.mesh.delete(type='VERT')
