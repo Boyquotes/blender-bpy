@@ -17,6 +17,16 @@ def importToScene(FILEPATH):
     for obj in data_to.objects:
         bpy.data.collections['collection_name'].objects.link(obj)
 
+def importObjToScene(FILEPATH, objName):
+    with bpy.data.libraries.load(FILEPATH) as (data_from, data_to):
+        data_to.objects = [name for name in data_from.objects]
+        print('These are the objs: ', data_to.objects)
+
+    # Objects have to be linked to show up in a scene
+    for obj in data_to.objects:
+        if obj.name == objName:
+            bpy.data.collections['collection_name'].objects.link(obj)
+
 def importSphereFromScene(FILEPATH):
     with bpy.data.libraries.load(FILEPATH) as (data_from, data_to):
         data_to.objects = [name for name in data_from.objects]
