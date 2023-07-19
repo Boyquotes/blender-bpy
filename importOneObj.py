@@ -45,3 +45,20 @@ def importSphereFromScene(FILEPATH):
         print(obj)
         obj_copy = obj.copy()
     return obj_copy
+
+import os
+import bpy
+# put the location to the folder where the FBXs are located here in this fashion
+# this line will only work on windows ie C:\objects
+path_to_obj_dir = os.path.join('C:\\', 'objects')
+# get list of all files in directory
+file_list = sorted(os.listdir(path_to_obj_dir))
+# get a list of files ending in 'fbx'
+obj_list = [item for item in file_list if item.endswith('.fbx')]
+# loop through the strings in obj_list and add the files to the scene
+for item in obj_list:
+    path_to_file = os.path.join(path_to_obj_dir, item)
+    bpy.ops.import_scene.fbx(filepath = path_to_file)
+    # if heavy importing is expected 
+    # you may want use saving to main file after every import 
+    bpy.ops.wm.save_mainfile(filepath = "File.blend")
