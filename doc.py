@@ -138,6 +138,20 @@ fcu_z.keyframe_points.add(2)
 fcu_z.keyframe_points[0].co = 10.0, 0.0
 fcu_z.keyframe_points[1].co = 20.0, 1.0
 
+def deSelectAll():
+    if bpy.context.object.mode == 'EDIT':
+        setObjMode()
+    bpy.ops.object.select_all(action='DESELECT')
+
+def duplicate(obj, data=True, actions=True, collection=None):
+    obj_copy = obj.copy()
+    if data:
+        obj_copy.data = obj_copy.data.copy()
+    if actions and obj_copy.animation_data:
+        obj_copy.animation_data.action = obj_copy.animation_data.action.copy()
+    bpy.context.collection.objects.link(obj_copy)
+    return obj_copy
+
 #DEBUG
 print('\nUsing dir(object) :\n')
 for attr in dir(bpy.context.active_object.data):
