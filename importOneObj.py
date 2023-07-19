@@ -16,6 +16,14 @@ def importFbx(objName):
     print(filepath)
     bpy.ops.import_scene.fbx(filepath=filepath)                                                   
 
+def importFbx(objName, renameObj = ''):
+    directory = os.path.dirname(bpy.data.filepath)
+    filepath = os.path.join(directory+'/exports', objName + ".fbx")
+    print(filepath)
+    bpy.ops.import_scene.fbx(filepath=filepath)
+    if renameObj:
+        bpy.context.active_object.name = renameObj
+
 def importToScene(FILEPATH):
     with bpy.data.libraries.load(FILEPATH) as (data_from, data_to):
         data_to.objects = [name for name in data_from.objects]
