@@ -412,7 +412,7 @@ def main():
     bpy.app.timers.register(scene_setup, first_interval=1.0)
     bpy.app.timers.register(make_tree, first_interval=3.0)
     bpy.app.timers.register(create_centerpiece, first_interval=6.0)
-    bpy.app.timers.register(arrangeNode.narrange, first_interval=6.0)  
+    bpy.app.timers.register(arrangeNode.narrange, first_interval=9.0)  
     
 #    arrangeNode.narrange()
 #    if finishResult:
