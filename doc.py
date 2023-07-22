@@ -524,3 +524,10 @@ def execute_queued_functions():
     run_in_main_thread(create_centerpiece)
     run_in_main_thread(arrangeNode.narrange)
     bpy.app.timers.register(execute_queued_functions)
+
+def getChildren(myObject): 
+    children = [] 
+    for ob in bpy.data.objects: 
+        if ob.parent == myObject: 
+            children.append(ob) 
+    return children 
