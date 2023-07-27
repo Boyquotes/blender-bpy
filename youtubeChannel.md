@@ -10,6 +10,7 @@ ErinDoes
 https://www.youtube.com/channel/UCGMyyn2FdEFcDfP1wQRh5lQ  
 https://www.youtube.com/@DECODEDVFX/  
 https://www.youtube.com/@cgboost  
+https://www.youtube.com/@KevBinge/  
 https://www.youtube.com/@BlenderSecrets
 Blender Guru  
 https://www.youtube.com/channel/UCOKHwx1VCdgnxwbjyb9Iu1g  
