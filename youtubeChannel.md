@@ -2,10 +2,15 @@ US
 https://www.youtube.com/@TheCGEssentials  
 https://www.youtube.com/@CGPython  
 https://www.youtube.com/@grabbitt   
+Default Cube UPBGE  
+https://www.youtube.com/channel/UCdpWKLNfbROyoGPV46-zaUQ  
+CGMatter  
+https://www.youtube.com/channel/UCy1f4m64dwCwk8CBZ_vHfPg  
 ErinDoes  
 https://www.youtube.com/channel/UCGMyyn2FdEFcDfP1wQRh5lQ  
 https://www.youtube.com/@DECODEDVFX/  
 https://www.youtube.com/@cgboost  
+https://www.youtube.com/@BlenderSecrets
 Blender Guru  
 https://www.youtube.com/channel/UCOKHwx1VCdgnxwbjyb9Iu1g  
 Polyfjord
