@@ -23,4 +23,8 @@ https://www.youtube.com/channel/UC1MmrnDaPnNa55twYBiH4NA
 FR
 https://www.youtube.com/@Mykol3d 
 https://www.youtube.com/@apprendre-blender 
-https://www.youtube.com/@Alex_3D
+https://www.youtube.com/@Alex_3D  
+
+FILM  
+https://www.youtube.com/@CBaileyFilm/  
+https://www.youtube.com/@IanHubert2  
