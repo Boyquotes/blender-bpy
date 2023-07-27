@@ -10,6 +10,8 @@ ErinDoes
 https://www.youtube.com/channel/UCGMyyn2FdEFcDfP1wQRh5lQ  
 https://www.youtube.com/@DECODEDVFX/  
 https://www.youtube.com/@cgboost  
+Ryan King Art  
+https://www.youtube.com/channel/UCIXjev1_mJ1plJhF9lGarQg  
 https://www.youtube.com/@KevBinge/  
 https://www.youtube.com/@BlenderSecrets  
 https://www.youtube.com/channel/UC9VayT7q3pQ7tdF-TG4Q0yQ  
