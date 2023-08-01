@@ -21,10 +21,10 @@ Polyfjord
 https://www.youtube.com/channel/UC1MmrnDaPnNa55twYBiH4NA  
 https://www.youtube.com/@InspirationTuts  
 
-FR
-https://www.youtube.com/@Mykol3d 
-https://www.youtube.com/@apprendre-blender 
-https://www.youtube.com/@Alex_3D  
+FR  
+https://www.youtube.com/@Mykol3d  
+https://www.youtube.com/@apprendre-blender  
+https://www.youtube.com/@Alex_3D   
 
 FILM  
 https://www.youtube.com/@CBaileyFilm/  
