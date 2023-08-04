@@ -20,6 +20,7 @@ https://www.youtube.com/channel/UCOKHwx1VCdgnxwbjyb9Iu1g
 Polyfjord
 https://www.youtube.com/channel/UC1MmrnDaPnNa55twYBiH4NA  
 https://www.youtube.com/@InspirationTuts  
+https://www.youtube.com/@Imphenzia  SPEED MODELING   
 
 FR  
 https://www.youtube.com/@Mykol3d  
