@@ -531,3 +531,10 @@ def getChildren(myObject):
         if ob.parent == myObject: 
             children.append(ob) 
     return children 
+
+# SEARCH AND MOVE
+objs = get_objects_including('rock', case_sensitive = True)
+print(objs)
+
+col = "ROCKS"
+move_objects_to_collection(objs, col)
