@@ -561,3 +561,11 @@ print(objs)
 
 col = "ROCKS"
 move_objects_to_collection(objs, col)
+
+# COLLECTIONS
+def del_collection(coll):
+    for c in coll.children:
+        del_collection(c)
+    bpy.data.collections.remove(coll,do_unlink=True)
+
+del_collection(bpy.data.collections["Collection_name_here"])
