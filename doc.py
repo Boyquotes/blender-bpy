@@ -570,5 +570,9 @@ def del_collection(coll):
 
 del_collection(bpy.data.collections["Collection_name_here"])
 
+#https://b3d.interplanety.org/en/selecting-objects-in-a-collection/
+bpy.context.collection.objects[:]Python
+for obj in bpy.context.collection.objects:
+    obj.select_set(True)
 for obj in bpy.context.collection.all_objects:
     obj.select_set(True)
