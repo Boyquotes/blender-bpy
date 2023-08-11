@@ -569,3 +569,6 @@ def del_collection(coll):
     bpy.data.collections.remove(coll,do_unlink=True)
 
 del_collection(bpy.data.collections["Collection_name_here"])
+
+for obj in bpy.context.collection.all_objects:
+    obj.select_set(True)
