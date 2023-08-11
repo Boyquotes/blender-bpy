@@ -5,14 +5,9 @@ import time
 import json
 import math
 import os
-import random
 import queue
 import functools
-
 from bpy_extras import object_utils
-import math
-import random
-
 from mathutils import Euler
 from mathutils import Quaternion
 from mathutils import Vector
