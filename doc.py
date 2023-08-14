@@ -571,3 +571,35 @@ for obj in bpy.context.collection.objects:
     obj.select_set(True)
 for obj in bpy.context.collection.all_objects:
     obj.select_set(True)
+
+
+# UNWRAP
+#grab mesh data for the active mesh.
+bpy.ops.object.mode_set(mode="EDIT")
+mesh = bpy.context.active_object.data
+bm = bmesh.from_edit_mesh(bpy.context.object.data)
+bm.faces.ensure_lookup_table()
+bpy.ops.uv.unwrap()
+uv_layer = bm.loops.layers.uv.active
+
+
+#assign the uv values for the vertices of each face. This example
+#assumes the default cube
+for i in range(6):
+
+    loop_data = bm.faces[i].loops
+    uv_data = loop_data[0][uv_layer].uv
+    uv_data.x = 1.0
+    uv_data.y = 0.0
+
+    uv_data = loop_data[1][uv_layer].uv
+    uv_data.x = 1.0
+    uv_data.y = 1.0
+
+    uv_data = loop_data[2][uv_layer].uv
+    uv_data.x = 0.0
+    uv_data.y = 1.0
+
+    uv_data = loop_data[3][uv_layer].uv
+    uv_data.x = 0.0
+    uv_data.y = 0.0
