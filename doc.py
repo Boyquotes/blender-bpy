@@ -607,3 +607,9 @@ for i in range(6):
 bpy.context.scene.transform_orientation_slots[0].type = 'LOCAL'
 bpy.context.scene.transform_orientation_slots[0].type = 'NORMAL'
 bpy.context.scene.transform_orientation_slots[0].type = 'GLOBAL'
+
+Assign a tuple of 3 booleans to set Vertex, Edge, Face selection.
+To activate vertex selection mode, use:
+bpy.context.tool_settings.mesh_select_mode = (True, False, False)
+For edge + face multi-selection mode, use:
+bpy.context.tool_settings.mesh_select_mode = (False, True, True)
