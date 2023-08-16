@@ -623,3 +623,6 @@ For edge selection, do:
 bm.select_mode = {'EDGE'}
 For vertex and face selection multi-mode, do:
 bm.select_mode = {'VERT', 'EDGE', 'FACE'}
+
+
+bpy.ops.object.origin_set(type="GEOMETRY_ORIGIN")
