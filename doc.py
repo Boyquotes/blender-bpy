@@ -613,3 +613,13 @@ To activate vertex selection mode, use:
 bpy.context.tool_settings.mesh_select_mode = (True, False, False)
 For edge + face multi-selection mode, use:
 bpy.context.tool_settings.mesh_select_mode = (False, True, True)
+
+bpy.ops.mesh.select_mode(type="VERT")
+bpy.ops.mesh.select_mode(type="EDGE")
+bpy.ops.mesh.select_mode(type="FACE")
+
+bm.select_mode
+For edge selection, do:
+bm.select_mode = {'EDGE'}
+For vertex and face selection multi-mode, do:
+bm.select_mode = {'VERT', 'EDGE', 'FACE'}
