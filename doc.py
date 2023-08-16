@@ -603,3 +603,7 @@ for i in range(6):
     uv_data = loop_data[3][uv_layer].uv
     uv_data.x = 0.0
     uv_data.y = 0.0
+
+bpy.context.scene.transform_orientation_slots[0].type = 'LOCAL'
+bpy.context.scene.transform_orientation_slots[0].type = 'NORMAL'
+bpy.context.scene.transform_orientation_slots[0].type = 'GLOBAL'
