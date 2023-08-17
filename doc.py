@@ -161,6 +161,30 @@ def deSelectAll():
         setObjMode()
     bpy.ops.object.select_all(action='DESELECT')
 
+def deSelectAll():
+    if bpy.context.object.mode == 'EDIT':
+        bpy.ops.object.mode_set(mode='OBJECT')
+    bpy.ops.object.select_all(action='DESELECT')
+
+
+def selectAll():
+    if bpy.context.object.mode == 'EDIT':
+        bpy.ops.object.mode_set(mode='OBJECT')
+    bpy.ops.object.select_all(action='SELECT')
+
+def selectAllVertices():
+    if bpy.context.object.mode == 'EDIT':
+        bpy.ops.mesh.select_mode(type="VERT")
+        bpy.ops.mesh.select_all(action = 'SELECT')
+
+def deSelectVertex():
+    bm.select_mode = {'VERT'}
+    for v in bm.verts:
+        v.select = False
+#        v.select = ( v.co.x > 0 )
+    bm.select_flush_mode()   
+    me.update()
+
 def duplicate(obj, data=True, actions=True, collection=None):
     obj_copy = obj.copy()
     if data:
