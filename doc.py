@@ -650,3 +650,43 @@ bm.select_mode = {'VERT', 'EDGE', 'FACE'}
 
 
 bpy.ops.object.origin_set(type="GEOMETRY_ORIGIN")
+
+def add_object_in_selection():
+    bpy.context.scene.transform_orientation_slots[0].type = 'GLOBAL'
+    select_ramdom_faces(6)
+    selfaces =[]
+    selpositions =[]
+#    bpy.ops.object.mode_set(mode='OBJECT')
+    print(len(bm.faces))
+    obMat = obj.matrix_world
+    print(obMat)
+    for f in bm.faces:
+        if f.select:
+            print(f.index)
+            selfaces.append(f)
+            print(f.normal)
+            face_location = f.calc_center_median()
+            loc_world_space = obMat @ face_location
+            print(loc_world_space)
+            x = face_location[0]
+            y = face_location[1]
+            z = face_location[2]
+            print('index: '+str(f.index), x, y, z)
+#            print(f.x)
+            my_location=f.calc_center_median()
+            print(my_location)
+            selpositions.append(loc_world_space)
+#            bpy.ops.object.mode_set(mode='OBJECT', toggle=False)
+#            bpy.ops.mesh.primitive_cone_add(location=my_location)
+#            cone=bpy.context.object
+#            cone.rotation_mode='QUATERNION'
+#            cone.rotation_quaternion*=Qrot.inverted()
+#            bpy.ops.object.mode_set(mode='EDIT', toggle=False)
+    print(selfaces)
+    print(len(selfaces))
+    print(selpositions)
+    print(len(selpositions))
+    bpy.ops.object.mode_set(mode='OBJECT', toggle=False)
+    for fokposition in selpositions:
+        print(fokposition)
+        bpy.ops.mesh.primitive_cone_add(location=fokposition)
