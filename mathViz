@@ -1,0 +1,3 @@
+obj = bpy.context.active_object
+lobj = [vertex.co for vertex in obj.data.vertices]
+lworld = [obj.matrix_world @ vector for vector in lobj]
