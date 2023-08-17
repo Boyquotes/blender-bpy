@@ -114,5 +114,33 @@ select_ramdom_faces_in_selection(5)
 
 #deSelectVertex()
 
+def add_object_in_selection():
+    select_ramdom_faces_in_selection(4)
+    selfaces =[]
+    selpositions =[]
+#    bpy.ops.object.mode_set(mode='OBJECT')
+    print(len(bm.faces))
+    for f in bm.faces:
+        if f.select:
+            print(f.index)
+            selfaces.append(f)
+            my_location=f.calc_center_median()
+            print(my_location)
+            selpositions.append(my_location)
+#            bpy.ops.object.mode_set(mode='OBJECT', toggle=False)
+#            bpy.ops.mesh.primitive_cone_add(location=my_location)
+#            cone=bpy.context.object
+#            cone.rotation_mode='QUATERNION'
+#            cone.rotation_quaternion*=Qrot.inverted()
+#            bpy.ops.object.mode_set(mode='EDIT', toggle=False)
+    print(selfaces)
+    print(len(selfaces))
+    print(selpositions)
+    print(len(selpositions))
+    bpy.ops.object.mode_set(mode='OBJECT', toggle=False)
+    for fokposition in selpositions:
+        print(fokposition)
+        bpy.ops.mesh.primitive_cone_add(location=fokposition)
+
 if bpy.context.object.mode == 'EDIT':
     bmesh.update_edit_mesh(me)
