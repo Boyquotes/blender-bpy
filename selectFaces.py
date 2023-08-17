@@ -92,7 +92,8 @@ def select_ramdom_faces():
 
 selfaces =[]
 
-def select_ramdom_faces_in_selection():
+def select_ramdom_faces_in_selection(total_selection=0):
+    nb_select=0
 #    bpy.ops.object.mode_set(mode='OBJECT')
     print(len(bm.faces))
     for f in bm.faces:
@@ -102,12 +103,14 @@ def select_ramdom_faces_in_selection():
     print(selfaces)
     print(len(selfaces))
     for fok in selfaces:
-        if random.random() > .5:
+        if random.random() > .5 and ( nb_select < total_selection or total_selection == 0 ):
             fok.select = True
+            nb_select = nb_select+1
         else:
             fok.select = False
 
-select_ramdom_faces_in_selection()
+select_ramdom_faces_in_selection(5)
+#select_ramdom_faces_in_selection()
 
 #deSelectVertex()
 
