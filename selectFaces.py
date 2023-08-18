@@ -8,6 +8,24 @@ if bpy.context.object.mode == 'EDIT':
 
 SEL_AMOUNT = .001
 
+NB_TREE=10
+NB_CUTS=int(NB_TREE/4)
+
+def selection_scatter_faces(bm, total_selection=0):
+    nb_select=0
+    selfaces =[]
+#    bpy.ops.object.mode_set(mode='OBJECT')
+    print(len(bm.faces))
+    bm.faces[0].select=True
+    for f in bm.faces:
+        if nb_select < total_selection:
+            num_choice_face=random.randint(0,63)
+            print(num_choice_face)
+            print(f.index)
+            bm.faces[num_choice_face].select=True
+            selfaces.append(f)
+            nb_select = nb_select+1
+
 def deSelectAll():
     if bpy.context.object.mode == 'EDIT':
         bpy.ops.object.mode_set(mode='OBJECT')
