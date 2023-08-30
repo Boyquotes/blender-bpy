@@ -697,3 +697,9 @@ font_curve = bpy.data.curves.new(type="FONT", name="Font Curve")
 font_curve.body = "my text"
 font_obj = bpy.data.objects.new(name="Font Object", object_data=font_curve)
 bpy.context.scene.collection.objects.link(font_obj)
+
+TEXT 2:
+temp3 = 'nr 3. '
+bpy.ops.object.text_add(enter_editmode=False, align='WORLD', location=(0, -2, 0), scale=(1, 1, 1))
+obj = bpy.context.object
+obj.data.body = temp3
