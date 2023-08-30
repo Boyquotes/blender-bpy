@@ -690,3 +690,10 @@ def add_object_in_selection():
     for fokposition in selpositions:
         print(fokposition)
         bpy.ops.mesh.primitive_cone_add(location=fokposition)
+
+
+TEXT FONT:
+font_curve = bpy.data.curves.new(type="FONT", name="Font Curve")
+font_curve.body = "my text"
+font_obj = bpy.data.objects.new(name="Font Object", object_data=font_curve)
+bpy.context.scene.collection.objects.link(font_obj)
